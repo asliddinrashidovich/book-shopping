@@ -369,54 +369,84 @@ function setData(data) {
                         <i class="fa-solid fa-trash" onclick="removeItem(this)"></i>
                     </div>
                     </div>
-                </div>
-            </div>
-        `;
+                    </div>
+                    </div>
+                    `;
   });
 }
 
 
 // shopping card
+let countTotal = 0;
 
-console.log(listCard)
 function addCardShopping() {
   listCard.innerHTML = ''
   shopProducts.map((value, i) => {
     listCard.innerHTML += `
-        <li class="item">
-            <div class="shop__img">
-              <img src=${value.image} alt="img">
-            </div>
-            <div class="">${value.title}</div>
-            <div class="">${value.price}</div>
-            <div class="">
-              <button class="" onclick="changeQuanity(${i})">-</button>
+    <li class="item">
+    <div class="shop__img">
+    <img src=${value.image} alt="img">
+    </div>
+    <div class="">${value.title}</div>
+    <div class="">${value.price}</div>
+    <div class="">
+              <button class="" onclick="changeQuanity(${i}, ${value.id}, 0)">-</button>
               <div class="count">${value.count}</div>
-              <button class="" onclick="changeQuanity(${i})">+</button>
+              <button class="" onclick="changeQuanity(${i}, ${value.id}, 2)">+</button>
             </div>
           </li>
     `
   })
 }
 
+
 function addToCard(id) {
-  let item = {...products[id], count: 1}
-  if(!shopProducts.includes(item)) {
+  let item = {...products[id], count: 1}  
+  let ids = [];
+  shopProducts.forEach(item => ids.push(item.id))
+  if(!ids.includes(item.id)) {
     shopProducts.push(item)
-    let filteredItem  = shopProducts.filter((first, next) => {
-      return first.id !== next.id
-    })
-    shopProducts = filteredItem
   } 
-
+  document.getElementById('cardQuantity').innerHTML = shopProducts.length
   addCardShopping()
-  console.log(shopProducts)
-
+  countTotal = 0;
+  totalCount()
 }
-let countNum = 0;
+
 const count = document.querySelectorAll('li .count');
 
-function changeQuanity(num, index) {
-  countNum += (index - num)
-  count.innerHTML = countNum
+function changeQuanity(id, valueId, ment) {
+    let countNum = 0;
+    products.forEach(pro => {
+      if(pro.id == valueId) {
+        countNum = pro
+      }
+    })
+    if(ment == 0) {
+      shopProducts[id].count--
+      shopProducts[id].price = (shopProducts[id].count * 100) * countNum.price / 100
+      if(shopProducts[id].count == 0) {
+        let removedArr = shopProducts.filter(item => {
+          return item.count !== 0
+        })
+        shopProducts = removedArr
+      } 
+      addCardShopping()
+    } else {
+      shopProducts[id].count++
+      shopProducts[id].price = (shopProducts[id].count * 100) * countNum.price / 100
+      addCardShopping()
+    }
+    countTotal = 0;
+    totalCount()
+}
+  
+
+//total
+
+function totalCount() {
+  shopProducts.forEach(item => {
+    countTotal += item.price;
+  })
+  total.innerHTML = `$${countTotal == Math.floor(countTotal) ? countTotal : countTotal.toFixed(2)}`
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books - Shopping</title>
-    <link rel="shortcut icon" href="./Assets/Images/logo.png" />
+    <link rel="icon" href="./Assets/Images/logo.png.svg" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -25,10 +25,10 @@
   </head>
   <body>
     <header>
-      <nav class="nav container grid" id="nav">
+      <nav class="nav container " id="nav">
         <a href="" class="nav_logo grid">
-          <img src="./Assets/Images/logo.png" alt="" />
-          <span>BOOKSHOP</span>
+          <img src="./Assets/Images/header_logo.svg" alt="header">
+          <!-- <span>BOOKSHOP</span> -->
         </a>
         <div class="nav_menu" id="nav_menu">
           <ul class="nav_list">
@@ -58,8 +58,7 @@
           </div>
           <div class="shopping-icon" id="cart">
             <i class="ri-shopping-cart-2-line">
-              <span class="quantity">0</span></i
-            >
+              <span class="quantity">0</span></i>
           </div>
           <div class="like-icon">
             <i class="ri-heart-line"><span class="quantity">0</span></i>
@@ -67,7 +66,6 @@
           <div class="user-icon">
             <i class="ri-user-line"></i>
           </div>
-          <!-- dark mode -->
           <div class="light-icon">
             <i class="ri-sun-line" id="sun"></i>
             <i class="ri-moon-line hide" id="moon"></i>
@@ -255,18 +253,6 @@
     <div class="card" id="cardShopping">
       <h1>Card</h1>
       <ul class="listCard">
-        <li class="item">
-          <div class="shop__img">
-            <img src="/Assets/Images/2.jpg" alt="img">
-          </div>
-          <div class="title">i was born width music</div>
-          <div class="">$ 200</div>
-          <div class="">
-            <button class="" onclick="changeQuanity(1,0)">-</button>
-            <div class="count">1</div>
-            <button class="" onclick="changeQuanity(1,2)">+</button>
-          </div>
-        </li>
       </ul>
       <div class="checkOut grid">
         <div class="total">0</div>

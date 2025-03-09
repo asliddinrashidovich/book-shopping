@@ -67,14 +67,13 @@ header {
   margin: auto;
 }
 header .nav {
+  display: flex;
   justify-content: space-between;
-  grid-template-columns: 1fr 2.2fr 0.8fr;
-  column-gap: 2.5rem;
+  width: 100%;
 }
 header .nav .nav_logo {
-  grid-template-columns: 0.6fr 3fr;
-  gap: 0.5rem;
   align-items: center;
+  width: 250px;
   padding: 0.2rem 0;
 }
 header .nav .nav_logo span {
@@ -90,6 +89,7 @@ header .nav .nav_menu .nav_list {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 30px;
 }
 header .nav .nav_menu .nav_list .nav_item {
   width: 100%;
@@ -114,6 +114,7 @@ header .nav .nav_icons {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 30px;
 }
 header .nav .nav_icons div {
   flex: 1;
@@ -967,9 +968,11 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 0 auto;
   }
   .nav_logo img{
-    width: 50px;
+    width: 250px;
+    transform: translateX(20%);
   }
  
   header .nav .nav_menu .nav_list {
